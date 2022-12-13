@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const articleSchema = mongoose.Schema({
   articleId: 'string',
+  articleNum: 'number',
   totalNum: 'number',
   dateStr: 'string',
   articleTags: 'array',
@@ -35,8 +36,10 @@ const findArticleById = async (ctx) => {
 
 const findArticleByNum = async (ctx) => {
   // articleId: ctx.params.id
-  // console.log(ctx.params.id)
-  const article = await Articles.find({ articleNum: ctx.params.num })
+  // console.log(ctx.params.num)
+  // console.log(parseInt(ctx.params.num))
+  // console.log(2)
+  const article = await Articles.find({ articleNum: parseInt(ctx.params.num) })
   if (!article) {
     ctx.throw(404, '查询失败')
   } else {
