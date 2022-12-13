@@ -32,4 +32,15 @@ const findArticleById = async (ctx) => {
     ctx.body = article
   }
 }
-module.exports = { findAllArticles, findArticleById }
+
+const findArticleByNum = async (ctx) => {
+  // articleId: ctx.params.id
+  // console.log(ctx.params.id)
+  const article = await Articles.find({ articleNum: ctx.params.num })
+  if (!article) {
+    ctx.throw(404, '查询失败')
+  } else {
+    ctx.body = article
+  }
+}
+module.exports = { findAllArticles, findArticleById, findArticleByNum }
