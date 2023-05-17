@@ -1,3 +1,4 @@
+const { log } = require('debug/src/browser')
 const mongoose = require('mongoose')
 
 const articleSchema = mongoose.Schema({
@@ -46,4 +47,13 @@ const findArticleByNum = async (ctx) => {
     ctx.body = article
   }
 }
-module.exports = { findAllArticles, findArticleById, findArticleByNum }
+// 查询 Articles 集合内文档总数
+const countAllArticles = async (ctx) => {
+  const count = await Articles.countDocuments({})
+  if (!count) {
+    ctx.throw(404, '查询失败')
+  } else {
+    ctx.body = count
+  }
+}
+module.exports = { findAllArticles, findArticleById, findArticleByNum, countAllArticles }

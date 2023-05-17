@@ -1,7 +1,13 @@
 const router = require('koa-router')()
 const mongoose = require('mongoose')
 
-const { findAllArticles, findArticleById, findArticleByNum } = require('./articles')
+const {
+  findAllArticles,
+  findArticleById,
+  findArticleByNum,
+  countAllArticles,
+} = require('./articles')
+
 const { findAllPictures, findPictureById, findPictureByNum } = require('./pictures')
 const { getMetadata } = require('./metadatas')
 
@@ -24,6 +30,7 @@ router.get('/', function (ctx, next) {
 
 router.get('/articles', findAllArticles)
 router.get('/articles/id/:id', findArticleById)
+router.get('/articles/count', countAllArticles)
 router.get('/articles/:num', findArticleByNum)
 
 router.get('/pictures', findAllPictures)
