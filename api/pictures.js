@@ -43,4 +43,13 @@ const findPictureByNum = async (ctx) => {
     ctx.body = picture
   }
 }
-module.exports = { findAllPictures, findPictureById, findPictureByNum }
+// 查询 Picyures 集合内文档总数
+const countAllPictures = async (ctx) => {
+  const count = await Pictures.countDocuments({})
+  if (!count) {
+    ctx.throw(404, '查询失败')
+  } else {
+    ctx.body = count
+  }
+}
+module.exports = { findAllPictures, findPictureById, findPictureByNum, countAllPictures }

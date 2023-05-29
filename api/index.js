@@ -8,7 +8,13 @@ const {
   countAllArticles,
 } = require('./articles')
 
-const { findAllPictures, findPictureById, findPictureByNum } = require('./pictures')
+const {
+  findAllPictures,
+  findPictureById,
+  findPictureByNum,
+  countAllPictures,
+} = require('./pictures')
+
 const { getMetadata } = require('./metadatas')
 
 const dbConfig = require('../database.config.json')
@@ -35,6 +41,7 @@ router.get('/articles/:num', findArticleByNum)
 
 router.get('/pictures', findAllPictures)
 router.get('/pictures/id/:id', findPictureById)
+router.get('/pictures/count', countAllPictures)
 router.get('/pictures/:num', findPictureByNum)
 
 router.get('/metadata', getMetadata)
