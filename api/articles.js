@@ -24,6 +24,15 @@ const findAllArticles = async (ctx) => {
   }
 }
 
+const findAllArticlesByNum = async (ctx) => {
+  const allArticles = await Articles.find().sort({ articleNum: -1 })
+  if (!allArticles) {
+    ctx.throw(404, '查询失败')
+  } else {
+    ctx.body = allArticles
+  }
+}
+
 const findArticleById = async (ctx) => {
   // articleId: ctx.params.id
   // console.log(ctx.params.id)
@@ -56,4 +65,10 @@ const countAllArticles = async (ctx) => {
     ctx.body = count
   }
 }
-module.exports = { findAllArticles, findArticleById, findArticleByNum, countAllArticles }
+module.exports = {
+  findAllArticles,
+  findArticleById,
+  findArticleByNum,
+  countAllArticles,
+  findAllArticlesByNum,
+}

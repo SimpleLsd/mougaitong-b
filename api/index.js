@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 
 const {
   findAllArticles,
+  findAllArticlesByNum,
   findArticleById,
   findArticleByNum,
   countAllArticles,
@@ -35,6 +36,7 @@ router.get('/', function (ctx, next) {
 })
 
 router.get('/articles', findAllArticles)
+router.get('/articlesbynum', findAllArticlesByNum)
 router.get('/articles/id/:id', findArticleById)
 router.get('/articles/count', countAllArticles)
 router.get('/articles/:num', findArticleByNum)
