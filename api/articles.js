@@ -45,10 +45,6 @@ const findArticleById = async (ctx) => {
 }
 
 const findArticleByNum = async (ctx) => {
-  // articleId: ctx.params.id
-  // console.log(ctx.params.num)
-  // console.log(parseInt(ctx.params.num))
-  // console.log(2)
   const article = await Articles.findOne({ articleNum: parseInt(ctx.params.num) })
   if (!article) {
     ctx.throw(404, '查询失败')

@@ -26,7 +26,7 @@ const findAllPictures = async (ctx) => {
 }
 
 const findPictureById = async (ctx) => {
-  const picture = await Pictures.find({ pictureId: ctx.params.id })
+  const picture = await Pictures.findOne({ pictureId: ctx.params.id })
   if (!picture) {
     ctx.throw(404, '查询失败')
   } else {
@@ -35,8 +35,7 @@ const findPictureById = async (ctx) => {
 }
 
 const findPictureByNum = async (ctx) => {
-  console.log(ctx.params.num)
-  const picture = await Pictures.find({ pictureNum: parseInt(ctx.params.num) })
+  const picture = await Pictures.findOne({ pictureNum: parseInt(ctx.params.num) })
   if (!picture) {
     ctx.throw(404, '查询失败')
   } else {
